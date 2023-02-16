@@ -43,10 +43,13 @@ function startOperation(e) {
         return
     }
 
-    operand = this.id;
     displayCounter = true;
     if (storedValues.length === 0) {
         storedValues.push(Number(display.textContent)); 
+        operand = this.id;
+    } else if (storedValues.length === 1) {
+        finishOperation();
+        operand = this.id;
     }
 }
 
@@ -57,7 +60,6 @@ function finishOperation() {
     display.textContent = operate(operand, storedValues[0], storedValues[1]);
     storedValues = [];
     storedValues.push(Number(display.textContent));
-    console.log(storedValues);
 }
 
 let storedValues = [];
