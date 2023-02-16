@@ -38,14 +38,16 @@ function startOperation(e) {
     if (this.textContent === 'AC') {
         display.textContent = '';
         operand = '';
+        displayCounter = false;
         storedValues = [];
         return
     }
 
     operand = this.id;
     displayCounter = true;
-    /* if (storedValues.length === 2) {} */
-    storedValues.push(Number(display.textContent));  
+    if (storedValues.length === 0) {
+        storedValues.push(Number(display.textContent)); 
+    }
 }
 
 function finishOperation() {
