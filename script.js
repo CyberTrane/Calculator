@@ -27,9 +27,29 @@ function operate(operator, num1, num2) {
 }
 
 function populateDisplay(e) {
-    const display = document.querySelector('.display');
-    display.textContent = this.textContent;
+    display.textContent += this.textContent;
 }
+
+function operation(e) {
+    if (this.textContent === 'AC') {
+        display.textContent = '';
+        storedValues = [];
+        return
+    }
+
+    operand = this.id;
+    storedValues.push(display.textContent);
+    display.textContent = '';  
+    console.log(storedValues); 
+}
+
+let storedValues = [];
+let operand;
+
+const display = document.querySelector('.display');
 
 const numbers = document.querySelectorAll('.number');
 numbers.forEach(number => number.addEventListener('click', populateDisplay));
+
+const operators = document.querySelectorAll('.operator');
+operators.forEach(operator => operator.addEventListener('click', operation));

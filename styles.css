@@ -79,6 +79,6 @@ button:hover {
     flex: 100px;
 }
 
-.operator {
+.operator, #equals {
     background-color: rgb(56, 56, 56);
 }
