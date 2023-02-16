@@ -59,9 +59,12 @@ button {
     font-family: 'Courier New', Courier, monospace;
 }
 
+button:hover {
+    background-color: rgba(28, 28, 28, 0.418);
+}
+
 #ac {
     flex: 300px;
-    background-color: rgb(56, 56, 56);
 }
 
 #divide {
