@@ -27,30 +27,44 @@ function operate(operator, num1, num2) {
 }
 
 function populateDisplay(e) {
-    if (displayCounter) {
+    if (displayBool) {
         display.textContent = '';
-        displayCounter = false;
+        displayBool = false;
     }
     display.textContent += this.textContent;
+    console.log(storedValues);
+    console.log(operand);
 }
 
 function startOperation(e) {
+    if (operatorBool) {
+        return
+    }
+
     if (this.textContent === 'AC') {
         display.textContent = '';
         operand = '';
-        displayCounter = false;
+        displayBool = false;
+        equalsBool = false;
         storedValues = [];
         return
     }
 
-    displayCounter = true;
+    displayBool = true;
     if (storedValues.length === 0) {
         storedValues.push(Number(display.textContent)); 
         operand = this.id;
+        operatorBool = true;
+    } else if (storedValues.length === 1 && equalsBool) {
+        operand = this.id;
+        equalsBool = false;
     } else if (storedValues.length === 1) {
         finishOperation();
         operand = this.id;
+        equalsBool = false;
     }
+    console.log(storedValues);
+    console.log(operand);
 }
 
 function finishOperation() {
@@ -60,11 +74,18 @@ function finishOperation() {
     display.textContent = operate(operand, storedValues[0], storedValues[1]);
     storedValues = [];
     storedValues.push(Number(display.textContent));
+    equalsBool = true;
+    operatorBool = false;
+
+    console.log(storedValues);
+    console.log(operand);
 }
 
 let storedValues = [];
 let operand = '';
-let displayCounter = false;
+let displayBool = false;
+let equalsBool = false;
+let operatorBool = false;
 
 const display = document.querySelector('.display');
 
