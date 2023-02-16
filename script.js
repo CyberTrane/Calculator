@@ -25,3 +25,11 @@ function operate(operator, num1, num2) {
         return divide(num1, num2);
     } 
 }
+
+function populateDisplay(e) {
+    const display = document.querySelector('.display');
+    display.textContent = this.textContent;
+}
+
+const numbers = document.querySelectorAll('.number');
+numbers.forEach(number => number.addEventListener('click', populateDisplay));
