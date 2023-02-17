@@ -59,7 +59,7 @@ button {
     font-family: 'Courier New', Courier, monospace;
 }
 
-button:hover, #equals:hover {
+button:hover, #equals:hover, #backspace:hover {
     background-color: rgba(28, 28, 28, 0.418);
 }
 
@@ -79,7 +79,7 @@ button:hover, #equals:hover {
     flex: 100px;
 }
 
-.operator, #equals {
+.operator, #equals, #backspace {
     background-color: rgb(56, 56, 56);
 }
 

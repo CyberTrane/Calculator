@@ -75,9 +75,11 @@ function startOperation(e) {
 
     displayBool = true;
     if (storedValues.length === 0) {
-        storedValues.push(Number(display.textContent)); 
-        operand = this.id;
-        operatorBool = true;
+        if (display.textContent !== '') {
+            storedValues.push(Number(display.textContent)); 
+            operand = this.id;
+            operatorBool = true;
+        }
     } else if (storedValues.length === 1 && equalsBool) {
         operand = this.id;
         equalsBool = false;
