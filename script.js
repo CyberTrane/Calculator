@@ -80,9 +80,16 @@ function finishOperation() {
     storedValues.push(Number(display.textContent));
     display.textContent = '';
 
-    display.textContent = operate(operand, storedValues[0], storedValues[1]);
+    let temp = operate(operand, storedValues[0], storedValues[1]);
+    if (temp.toString().length > 12 && temp.toString().includes('.')) {
+        const arr = temp.toString().split('.');
+        temp = temp.toFixed(11 - arr[0].length);
+    }
+    display.textContent = temp;
+    /* display.textContent = operate(operand, storedValues[0], storedValues[1]); */
     storedValues = [];
     storedValues.push(Number(display.textContent));
+
     equalsBool = true;
     displayBool = true;
     operatorBool = true;
