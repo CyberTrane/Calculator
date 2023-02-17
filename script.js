@@ -33,7 +33,12 @@ function populateDisplay(e) {
         operatorBool = false;
         equalsBool = false;
     }
-    display.textContent += this.textContent;
+
+    if (this.textContent === '.' && display.textContent.includes('.')) {
+        return
+    } else {
+        display.textContent += this.textContent;
+    }
 }
 
 function startOperation(e) {
