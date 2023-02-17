@@ -59,7 +59,7 @@ button {
     font-family: 'Courier New', Courier, monospace;
 }
 
-button:hover {
+button:hover, #equals:hover {
     background-color: rgba(28, 28, 28, 0.418);
 }
 

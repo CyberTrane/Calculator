@@ -30,23 +30,24 @@ function populateDisplay(e) {
     if (displayBool) {
         display.textContent = '';
         displayBool = false;
+        operatorBool = false;
     }
     display.textContent += this.textContent;
-    console.log(storedValues);
-    console.log(operand);
 }
 
 function startOperation(e) {
-    if (operatorBool) {
-        return
-    }
-
     if (this.textContent === 'AC') {
         display.textContent = '';
         operand = '';
         displayBool = false;
         equalsBool = false;
+        operatorBool = false;
         storedValues = [];
+        return
+    }
+
+    if (operatorBool) {
+        operand = this.id;
         return
     }
 
@@ -62,12 +63,15 @@ function startOperation(e) {
         finishOperation();
         operand = this.id;
         equalsBool = false;
+        operatorBool = true;
     }
-    console.log(storedValues);
-    console.log(operand);
 }
 
 function finishOperation() {
+    if (storedValues.length === 0 || equalsBool) {
+        return
+    }
+
     storedValues.push(Number(display.textContent));
     display.textContent = '';
 
@@ -76,9 +80,6 @@ function finishOperation() {
     storedValues.push(Number(display.textContent));
     equalsBool = true;
     operatorBool = false;
-
-    console.log(storedValues);
-    console.log(operand);
 }
 
 let storedValues = [];
