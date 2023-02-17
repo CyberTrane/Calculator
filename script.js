@@ -31,6 +31,7 @@ function populateDisplay(e) {
         display.textContent = '';
         displayBool = false;
         operatorBool = false;
+        equalsBool = false;
     }
     display.textContent += this.textContent;
 }
@@ -62,7 +63,6 @@ function startOperation(e) {
     } else if (storedValues.length === 1) {
         finishOperation();
         operand = this.id;
-        equalsBool = false;
         operatorBool = true;
     }
 }
@@ -79,7 +79,8 @@ function finishOperation() {
     storedValues = [];
     storedValues.push(Number(display.textContent));
     equalsBool = true;
-    operatorBool = false;
+    displayBool = true;
+    operatorBool = true;
 }
 
 let storedValues = [];
