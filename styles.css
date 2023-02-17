@@ -64,10 +64,10 @@ button:hover, #equals:hover {
 }
 
 #ac {
-    flex: 300px;
+    flex: 200px;
 }
 
-#divide {
+#divide, #backspace {
     flex: 100px;
 }
 
@@ -81,4 +81,8 @@ button:hover, #equals:hover {
 
 .operator, #equals {
     background-color: rgb(56, 56, 56);
+}
+
+#backspace {
+    font-size: 48px;
 }

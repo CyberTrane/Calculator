@@ -45,6 +45,18 @@ function populateDisplay(e) {
     }
 }
 
+function deleteDigit() {
+    if (display.textContent !== '') {
+        let temp = display.textContent;
+        const arr = temp.split('');
+        arr.pop();
+        display.textContent = '';
+        for (let i = 0; i < arr.length; i++) {
+            display.textContent += arr[i];
+        }
+    }
+}
+
 function startOperation(e) {
     if (this.textContent === 'AC') {
         display.textContent = '';
@@ -90,7 +102,6 @@ function finishOperation() {
         temp = temp.toFixed(11 - arr[0].length);
     }
     display.textContent = temp;
-    /* display.textContent = operate(operand, storedValues[0], storedValues[1]); */
     storedValues = [];
     storedValues.push(Number(display.textContent));
 
@@ -115,3 +126,6 @@ operators.forEach(operator => operator.addEventListener('click', startOperation)
 
 const equals = document.querySelector('#equals');
 equals.addEventListener('click', finishOperation);
+
+const backspace = document.querySelector('#backspace');
+backspace.addEventListener('click', deleteDigit);
